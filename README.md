@@ -6,4 +6,4 @@
 
 拷贝一个图，动态创建堆，返回图起点指针。
 
-[1]: www.test.com
+[1]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/CloneGraph.cpp
