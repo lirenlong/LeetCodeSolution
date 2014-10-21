@@ -18,9 +18,17 @@
 
 看[soulmachine/戴方勤的题解][soulmachine1]，思路非常清晰：将矩阵对称翻转，再'撇'对角线翻转。
 
+### [Find Minimum in Rotated Sorted Array][3]
+
+寻找偶一个有序数组中，最小的那个，有序有特殊性，是将一个有序的数组，从某个位置一刀两半，在LR交换重新拼接成的所谓rotated sorted数组。
+
+[题解][3_0]那么只需要找到那个断层即可。
+
 [1]: https://oj.leetcode.com/problems/clone-graph/
 [1_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/CloneGraph_bf.cpp
 [1_1]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/CloneGraph_df.cpp
 [2]: https://oj.leetcode.com/problems/rotate-image/
 [2_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/RotateImage.cpp
 [soulmachine1]: https://github.com/soulmachine/leetcode
+[3]: https://oj.leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+[3_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/FindMinimuminRotatedSortedArray.cpp
