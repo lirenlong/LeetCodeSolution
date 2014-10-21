@@ -1,8 +1,7 @@
-#include <stdio.h>
+#include <iostream>
 #include <vector>
-#include <numeric>
-#include <functional>
 #include <queue>
+#include <map>
 using namespace std;
 
 struct UndirectedGraphNode {
@@ -11,8 +10,11 @@ struct UndirectedGraphNode {
 	UndirectedGraphNode(int x) : label(x) {};
 };
 
+map<UndirectedGraphNode*,UndirectedGraphNode*> Map;
+
 class Solution {
 public:
+	//我的题解
 	UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
 		if(node == NULL)
 			return node;
@@ -23,7 +25,7 @@ public:
 		UndirectedGraphNode *head = new UndirectedGraphNode(node->label);
 		UndirectedGraphNode *cursor = head;
 		UndirectedGraphNode *target = node;
-		
+
 		vecCache.push_back(cursor);
 		queNextTask.push(cursor);
 		queNextTask.push(target);
@@ -45,7 +47,7 @@ public:
 					if(vecCache[i]->label == target->neighbors[j]->label)
 						break;
 				}
-				
+
 				UndirectedGraphNode *tmp = NULL;
 				if(i == vecCache.size())
 				{
@@ -63,13 +65,45 @@ public:
 		}
 		return head;
 	}
+
+	//http://leetcode.com/2012/05/clone-graph-part-i.html此人的题解思路
+	UndirectedGraphNode *cloneGraph_Other(UndirectedGraphNode *node) {
+		if(!node) return NULL;
+		queue<UndirectedGraphNode*> q;
+		q.push(node);
+
+		UndirectedGraphNode *flag = new UndirectedGraphNode(node->label);
+		Map[node] = flag;
+
+		while(!q.empty())
+		{
+			UndirectedGraphNode *node = q.front();
+			q.pop();
+			int n = node->neighbors.size();
+			for(int i = 0 ; i < n; ++i){
+				UndirectedGraphNode *neighbor = node->neighbors[i];
+				if(Map.find(neighbor) == Map.end())
+				{
+					UndirectedGraphNode *tmp = new UndirectedGraphNode(neighbor->label);
+					Map[node]->neighbors.push_back(tmp);
+					Map[neighbor] = tmp;
+					q.push(neighbor);
+				}
+				else
+				{
+					Map[node]->neighbors.push_back(Map[neighbor]);
+				}
+			}
+		}
+		return flag;
+	}
 };
 
 //https://oj.leetcode.com/problems/clone-graph/
 int main()
 {
 	Solution s;
-	
+
 	UndirectedGraphNode *head = new UndirectedGraphNode(0);
 	UndirectedGraphNode *p1 = new UndirectedGraphNode(1);
 	UndirectedGraphNode *p2 = new UndirectedGraphNode(2);
@@ -80,6 +114,8 @@ int main()
 	p2->neighbors.push_back(p2);
 
 	UndirectedGraphNode *p = s.cloneGraph(head);
+	//UndirectedGraphNode *p = s.cloneGraph_Other(head);
 	printf("%d",p->label);
+	system("pause");
 	return 0;
 }
