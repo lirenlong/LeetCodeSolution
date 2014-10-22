@@ -28,6 +28,16 @@
 
 在Find Minimum in Rotated Sorted Array基础上，允许元素是重复的。I的逻辑基本符合，除了一种情况，就是把重复元素中的某一个作为pixel point的时候，这个时候，num[left]和num[right]相同，所以把这个逻辑填上即可。时间复杂度为O(logn + n) = O(n)。
 
+### [Maximum Product Subarray][5]
+
+动态规划，由于是求最大连续乘积，那么最优子结构是对于当前状态有3个选择：如果当前值是负，与之前最小值乘；如果当前值是正，与之前最大值乘；如果是0，从新开始。
+
+则动态转移方程为：
+
+`
+	dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
+	dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
+`
 
 
 [1]: https://oj.leetcode.com/problems/clone-graph/
@@ -39,3 +49,4 @@
 [3]: https://oj.leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 [3_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/FindMinimuminRotatedSortedArray.cpp
 [4]: https://oj.leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
+[5]: https://oj.leetcode.com/problems/maximum-product-subarray/
