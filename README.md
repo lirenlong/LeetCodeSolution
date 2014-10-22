@@ -35,9 +35,10 @@
 则动态转移方程为：
 
 `
-	dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
-	
-	dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
+dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
+`
+`
+dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
 `
 
 
