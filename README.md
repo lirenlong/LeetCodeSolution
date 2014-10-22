@@ -1,6 +1,6 @@
 # My Solutions to LeetCode
 
-当前进度：29/153
+当前进度：31/153
 
 ### [Clone Graph][1]
 
@@ -36,6 +36,7 @@
 
 `
 	dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
+	
 	dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
 `
 
