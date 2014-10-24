@@ -1,6 +1,6 @@
 # My Solutions to LeetCode
 
-当前进度：29/153
+当前进度：30/153
 
 ### [Clone Graph][1]
 
@@ -26,7 +26,9 @@
 
 ### [Find Minimum in Rotated Sorted Array II][4]
 
-在Find Minimum in Rotated Sorted Array基础上，允许元素是重复的。I的逻辑基本符合，除了一种情况，就是把重复元素中的某一个作为pixel point的时候，这个时候，num[left]和num[right]相同，所以把这个逻辑填上即可。时间复杂度为O(logn + n) = O(n)。
+在Find Minimum in Rotated Sorted Array基础上，允许元素是重复的。
+
+I的逻辑基本符合，除了一种情况，就是把重复元素中的某一个作为pixel point的时候，这个时候，num[left]和num[right]相同，所以把这个逻辑填上即可。时间复杂度为O(logn + n) = O(n)。
 
 
 
