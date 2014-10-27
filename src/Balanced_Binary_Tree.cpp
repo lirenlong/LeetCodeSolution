@@ -59,7 +59,6 @@ public:
 	//高富帅写法
 	int balancedHeightGFS (TreeNode* root) {
 		if (root == nullptr) return 0; // 终止条件
-		5.1 二叉树的遍历 103
 		int left = balancedHeight (root->left);
 		int right = balancedHeight (root->right);
 		if (left < 0 || right < 0 || abs(left - right) > 1) return -1; // 剪枝
