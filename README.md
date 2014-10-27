@@ -36,11 +36,35 @@ I的逻辑基本符合，除了一种情况，就是把重复元素中的某一�
 
 则动态转移方程为：
 
-```
-		dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
-		dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
-```
+    dp_max[i]=max(dp_max[i-1]*A[i], dp_min[i-1]*A[i], A[i])
+    dp_min[i]=min(dp_min[i-1]*A[i], dp_max[i-1]*A[i], A[i])
 
+### [Reverse Words in a String][6]
+
+使用stl中的strok来以空格切分字串，注意输入是""和" "的情况。[题解][6_0]
+
+### [Add Two Numbers][7]
+
+题目简单，注意进位问题，和两个数字链表长度不一致的情况[即可][7_0]。
+
+### [Add Binary][8]
+
+同[Add Two Numbers][7]题目，学会使用stl解决问题。这里可以用到reverse进行字符串反转，用*string*.insert来向字符串的头部进行添加。[题解][8_0]
+
+### [Balanced Binary Tree][9]
+
+充分利用未来完成的函数，实现合理的递归，看看高富帅的代码比我的简洁多少。
+
+    bool isBalanced (TreeNode* root) {
+		return balancedHeight (root) >= 0;
+	}
+	int balancedHeightGFS (TreeNode* root) {
+		if (root == nullptr) return 0; // 终止条件
+		int left = balancedHeight (root->left);
+		int right = balancedHeight (root->right);
+		if (left < 0 || right < 0 || abs(left - right) > 1) return -1; // 剪枝
+		return max(left, right) + 1; // 三方合并
+	}
 
 [1]: https://oj.leetcode.com/problems/clone-graph/
 [1_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/CloneGraph_bf.cpp
@@ -52,3 +76,11 @@ I的逻辑基本符合，除了一种情况，就是把重复元素中的某一�
 [3_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/FindMinimuminRotatedSortedArray.cpp
 [4]: https://oj.leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
 [5]: https://oj.leetcode.com/problems/maximum-product-subarray/
+[6]: https://oj.leetcode.com/problems/reverse-words-in-a-string/
+[6_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/Reverse_Words_in_String.cpp
+[7]: https://oj.leetcode.com/problems/add-two-numbers/
+[7_0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/Add_Two_Numbers.cpp
+[8]: https://oj.leetcode.com/problems/add-binary/
+[8-0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/Add_Binary.cpp
+[9]: https://oj.leetcode.com/problems/balanced-binary-tree/
+[9-0]: https://github.com/rogerAce/LeetCodeSolution/blob/master/src/Balanced_Binary_Tree.cpp
