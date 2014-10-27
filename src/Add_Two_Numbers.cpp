@@ -57,7 +57,7 @@ public:
 
 public:
 	//高富帅写法
-	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+	ListNode *addTwoNumbersGFS(ListNode *l1, ListNode *l2) {
 		ListNode dummy(-1); // 头节点
 		int carry = 0;
 		ListNode *prev = &dummy;
